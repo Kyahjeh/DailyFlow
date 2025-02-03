@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - DailyFlow</title>
+  <style>
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+      font-family: 'Poppins', sans-serif; 
+    }
+
+    body { 
+      background: #e8f5e9; /* Light green background */ 
+      color: #388e3c; /* Darker green text */ 
+    }
+
+    .navbar { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      background: #388e3c; /* Dark green navbar */ 
+      padding: 15px 30px; 
+      color: white; 
+      position: fixed; 
+      width: 100%; 
+      top: 0; 
+      left: 0; 
+      z-index: 1000; 
+    }
+    
+    .nav-links { 
+      list-style: none; 
+      display: flex; 
+    }
+    
+    .nav-links li { 
+      margin: 0 15px; 
+    }
+    
+    .nav-links a { 
+      text-decoration: none; 
+      color: white; 
+      font-weight: bold; 
+      transition: 0.3s; 
+    }
+    
+    .nav-links a:hover { 
+      color: #ffcc00; 
+    }
+
+    .menu-toggle { 
+      display: none; 
+      font-size: 2rem; 
+      cursor: pointer; 
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { 
+        display: none; 
+        flex-direction: column; 
+        position: absolute; 
+        top: 60px; 
+        right: 0; 
+        background: #388e3c; 
+        width: 100%; 
+        padding: 20px; 
+        border-radius: 10px; 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+      }
+
+      .nav-links li { 
+        margin: 15px 0; 
+      }
+
+      .nav-links.show { 
+        display: flex; 
+      }
+
+      .menu-toggle { 
+        display: block; 
+      }
+    }
+
+    .container { 
+      max-width: 600px; 
+      margin: 100px auto; 
+      padding: 30px; 
+      background: white; 
+      border-radius: 12px; 
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+      text-align: center; 
+    }
+    
+    h1 { 
+      font-size: 2.5rem; 
+      color: #388e3c; 
+      margin-bottom: 20px; 
+    }
+    
+    input, textarea, button { 
+      width: 90%; 
+      padding: 12px; 
+      margin: 15px 0; 
+      border-radius: 8px; 
+      border: 1px solid #ccc; 
+    }
+    
+    button { 
+      background: #388e3c; 
+      color: white; 
+      cursor: pointer; 
+      font-weight: bold; 
+    }
+    
+    button:hover { 
+      background: #1a5ecb; 
+    }
+
+    footer { 
+      text-align: center; 
+      padding: 20px; 
+      background: #388e3c; 
+      color: white; 
+      margin-top: 50px; 
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">DailyFlow</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="weather.html">Weather</a></li>
+      <li><a href="todo.html">To-Do List</a></li>
+      <li><a href="history.html">History</a></li>
+    </ul>
+    <div class="menu-toggle">&#9776;</div>
+  </nav>
+
+  <!-- Contact Form Section -->
+  <div class="container">
+    <h1>Contact Us</h1>
+    <form id="contactForm" action="https://formsubmit.co/jamph1417@gmail.com" method="POST">
+      <input type="hidden" name="_next" value="https://kyahjeh.github.io/DailyFlow/contact.html">
+      <input type="text" name="name" id="name" placeholder="Your Name" required>
+      <input type="email" name="email" id="email" placeholder="Your Email" required>
+      <textarea name="message" id="message" placeholder="Your Message" rows="5" required></textarea>
+      <input type="hidden" name="_subject" value="New Contact Form Submission">
+      <input type="hidden" name="_captcha" value="false"> <!-- Optional: Disable CAPTCHA -->
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 DailyFlow. Made with care by Jehrrymar Fernandez, Lanz Pulido, Casey Garcia, Jude Caraan, and Santino Marquez</p>
+  </footer>
+
+  <script>
+  // Function to handle form submission
+    function submitForm(event) {
+      event.preventDefault(); // Prevent the form from submitting immediately
+
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let message = document.getElementById("message").value;
+
+      // Show the thank you message
+      alert('Thank you for reaching out! We\'ll get back to you shortly.');
+
+      // Allow the form to submit after the alert
+      setTimeout(function() {
+        document.getElementById('contactForm').submit();  // Submit the form programmatically
+      }, 2000); // Wait for 2 seconds before submitting
+    }
+
+    // Attach the submitForm function to the form submission event
+    document.getElementById('contactForm').addEventListener('submit', submitForm);
+    // Responsive Navbar Toggle
+    document.addEventListener('DOMContentLoaded', function () {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+
+      menuToggle.addEventListener('click', function () {
+        navLinks.classList.toggle('show');
+      });
+    });
+  </script>
+
+</body>
+</html>
